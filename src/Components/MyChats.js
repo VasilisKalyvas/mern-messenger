@@ -4,9 +4,9 @@ import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ChatLoading from "./ChatLoading";
-import { Button } from "@chakra-ui/react";
+import { Avatar, Button } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
-import { getSender } from "../config/ChatLogics";
+import { getSender, getSenderPic } from "../config/ChatLogics";
 import GroupChatModal from './GroupChatModal';
 
 const MyChats = ({ fetchAgain }) => {
@@ -101,6 +101,14 @@ const MyChats = ({ fetchAgain }) => {
                 borderRadius="lg"
                 key={chat._id}
               >
+                <Avatar
+                size="sm"
+                cursor="pointer"
+                src={!chat.isGroupChat
+                  ? getSenderPic(loggedUser, chat.users)
+                  : null}
+              />
+                
               <Text>
               {!chat.isGroupChat
                 ? getSender(loggedUser, chat.users)

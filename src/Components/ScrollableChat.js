@@ -1,5 +1,7 @@
 import { Avatar } from "@chakra-ui/avatar";
+import { Box, Stack } from "@chakra-ui/react";
 import { Tooltip } from "@chakra-ui/tooltip";
+import { useEffect, useRef } from "react";
 import ScrollToBottom from 'react-scroll-to-bottom';
 import {
   isLastMessage,
@@ -11,11 +13,17 @@ import { ChatState } from "../Context/ChatProvider";
 
 const ScrollableChat = ({ messages }) => {
   const { user } = ChatState();
+  const  messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView();
+  },[messages]);
 
   return (
-    <ScrollToBottom>
+    <Box className="Chat">
       {messages &&
         messages.map((m, i) => (
+         
           <div style={{ display: "flex" }} key={m._id}>
             {(isSameSender(messages, m, i, user._id) ||
               isLastMessage(messages, i, user._id)) && (
@@ -45,8 +53,11 @@ const ScrollableChat = ({ messages }) => {
               {m.content}
             </span>
           </div>
-        ))}
-    </ScrollToBottom>
+          
+        ))
+        }
+        <div ref={messagesEndRef}/>
+    </Box>
   );
 };
 

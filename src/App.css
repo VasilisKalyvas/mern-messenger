@@ -7,3 +7,19 @@
   overflow: scroll;
   overflow-x: hidden;
 }
+.scrollChat{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  overflow: scroll;
+  overflow-x: hidden;
+  display:flex;
+  flex-direction: column;
+}
+
+.Chat {
+  height: 450px;
+  overflow-y: scroll;
+}
