@@ -17,7 +17,8 @@ var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
-    const [messages, setMessages] = useState([]);
+  const [loggedUser, setLoggedUser] = useState();
+  const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState("");
   const [socketConnected, setSocketConnected] = useState(false);
@@ -134,6 +135,12 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       }
     });
   });
+    useEffect(() => {
+      setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
+      fetchChats();
+      // eslint-disable-next-line
+    // console.log(loggedUser);
+  }, [fetchAgain]);
 
   const typingHandler = (e) => {
     setNewMessage(e.target.value);
@@ -227,8 +234,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             >
               {istyping ? (
                 <div><p> User {!selectedChat.isGroupChat
-                  ? getSender(user, selectedChat.users)
-                  : getSender(user, selectedChat.users)} is typing...</p>
+                  ? getSender(loggedUser, selectedChat.users)
+                  : getSender(loggedUser, selectedChat.users)} is typing...</p>
                 </div>
               ) : (
                 <></>
