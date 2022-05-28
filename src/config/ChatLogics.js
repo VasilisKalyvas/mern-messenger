@@ -49,7 +49,7 @@ export const getSenderGroup = (loggedUser, users) => {
       console.log(loggedUser._id)
       return users[i++].name;
     }else{
-      return users[i--].name;
+      return users[i].name;
     }
   }
 };
