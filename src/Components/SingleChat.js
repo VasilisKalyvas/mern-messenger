@@ -186,6 +186,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   <ProfileModal
                     user={getSenderFull(user, selectedChat.users)}
                   />
+                  {socketConnected ? (<>Online</>)  : (<>Offline</>)}
                 </>
               ) : (
                 <>
