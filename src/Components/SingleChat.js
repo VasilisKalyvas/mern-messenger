@@ -109,6 +109,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     socket.on("connected", () => setSocketConnected(true));
     socket.on("typing", () => setIsTyping(true));
     socket.on("stop typing", () => setIsTyping(false));
+
     // eslint-disable-next-line
   }, []);
 
@@ -185,6 +186,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   <ProfileModal
                     user={getSenderFull(user, selectedChat.users)}
                   />
+                  {socketConnected ? (<>Online</>)  : (<>Offline</>)}
                 </>
               ) : (
                 <>
