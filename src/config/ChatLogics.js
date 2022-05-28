@@ -47,7 +47,7 @@ export const getSenderGroup = (loggedUser, users) => {
     if(users[i]._id === loggedUser._id)
     {
       console.log(loggedUser._id)
-      return users[i].name;
+      return users[i++].name;
     }
   }
 };
