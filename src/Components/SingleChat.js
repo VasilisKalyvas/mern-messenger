@@ -137,10 +137,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   });
     useEffect(() => {
       setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
-      fetchChats();
-      // eslint-disable-next-line
-    // console.log(loggedUser);
-  }, [fetchAgain]);
+  }, []);
 
   const typingHandler = (e) => {
     setNewMessage(e.target.value);
