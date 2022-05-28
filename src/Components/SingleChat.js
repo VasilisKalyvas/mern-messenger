@@ -2,7 +2,7 @@ import { FormControl } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
 import { IconButton, Spinner, useToast } from "@chakra-ui/react";
-import { getSender, getSenderFull } from "../config/ChatLogics";
+import { getSender, getSenderFull, getSenderGroup } from "../config/ChatLogics";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ArrowBackIcon } from "@chakra-ui/icons";
@@ -232,7 +232,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               {istyping ? (
                 <div> {!selectedChat.isGroupChat
                   ? <p className="oblique"> User {getSender(loggedUser, selectedChat.users)} is typing... </p>
-                  : <p className="oblique">A User is typing..</p>} 
+                  : <p className="oblique">User {getSenderGroup(loggedUser, selectedChat.users)} is typing..</p>} 
                 </div>
               ) : (
                 <></>

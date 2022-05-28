@@ -42,6 +42,15 @@ export const getSender = (loggedUser, users) => {
   return users[0]._id === loggedUser._id ? users[1].name : users[0].name;
 };
 
+export const getSenderGroup = (loggedUser, users) => {
+  for( let i=0; i < users.length(); i++){
+    if(users[i]._id === loggedUser._id)
+    {
+      return users[i].name;
+    }
+  }
+};
+
 export const getSenderPic = (loggedUser, users) => {
   return users[0]._id === loggedUser._id ? users[1].pic : users[0].pic;
 };
