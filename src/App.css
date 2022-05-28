@@ -23,6 +23,11 @@
   height: 450px;
   overflow-y: scroll;
 }
+
 .sticky{
   position: sticky; top: 0;
+}
+
+.oblique {
+  font-style: oblique;
 }
