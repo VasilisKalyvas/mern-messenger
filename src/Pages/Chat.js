@@ -11,7 +11,7 @@ const Chat = () => {
 
   return (
     <div style={{ width: "100%" }}>
-      {user && <SideDrawer />}
+      {user && <SideDrawer  className='sticky'/>}
       <Box style={{ display: 'flex', justifyContent: 'space-between', height: '91.5vh', padding: '10px', width: "100%" }}>
         {user && <MyChats fetchAgain={fetchAgain} />}
         {user && (

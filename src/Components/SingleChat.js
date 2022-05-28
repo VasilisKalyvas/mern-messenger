@@ -226,7 +226,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               mt={3}
             >
               {istyping ? (
-                <div>
+                <div><p> User {!selectedChat.isGroupChat
+                  ? getSender(user, selectedChat.users)
+                  : null} is typing...</p>
                 </div>
               ) : (
                 <></>
