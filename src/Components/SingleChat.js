@@ -21,7 +21,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState("");
-  const [socketConnected, setSocketConnected] = useState(false);
   const [typing, setTyping] = useState(false);
   const [istyping, setIsTyping] = useState(false);
   const toast = useToast();
@@ -34,7 +33,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     },
   };
   
-  const { selectedChat, setSelectedChat, user, notification, setNotification } =
+  const { selectedChat, setSelectedChat, user, notification, setNotification, socketConnected,
+    setSocketConnected } =
     ChatState();
 
   const fetchMessages = async () => {
