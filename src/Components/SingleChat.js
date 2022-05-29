@@ -186,7 +186,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   <ProfileModal
                     user={getSenderFull(user, selectedChat.users)}
                   />
-                  {getSenderStatus ? (<>Online</>)  : (<>Offline</>)}
                 </>
               ) : (
                 <>
@@ -233,7 +232,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               {istyping ? (
                 <div> {!selectedChat.isGroupChat
                   ? <p className="oblique"> User {getSender(user, selectedChat.users)} is typing... </p>
-                  : <p className="oblique">User {getSenderGroup(user, selectedChat.users)} is typing..</p>} 
+                  : <p className="oblique"> A User is typing..</p>} 
                 </div>
               ) : (
                 <></>
