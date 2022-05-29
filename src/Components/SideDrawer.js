@@ -51,7 +51,7 @@ function SideDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
 
-  const logoutHandler = (email) => {
+  const logoutHandler = async (email) => {
     try {
       const config = {
         headers: {
