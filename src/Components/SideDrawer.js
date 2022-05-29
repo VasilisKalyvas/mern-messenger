@@ -51,10 +51,35 @@ function SideDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
 
-  const logoutHandler = () => {
-    localStorage.removeItem("userInfo");
-    setSocketConnected(false);
-    navigate("/");
+  const logoutHandler = (email) => {
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+
+      const { data } = await axios.post(
+        "https://mern-backend-messenger.herokuapp.com/api/user/logout",
+        { email },
+        config
+      );
+
+       //console.log(JSON.stringify(data));
+      localStorage.removeItem("userInfo");
+      setSocketConnected(false);
+      navigate("/");
+    } catch (error) {
+      toast({
+        title: "Error Occured!",
+        description: error.response.data.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+    }
   };
 
   const handleSearch = async () => {
@@ -185,7 +210,7 @@ function SideDrawer() {
                 <MenuItem>My Profile</MenuItem>{" "}
               </ProfileModal>
               <MenuDivider />
-              <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+              <MenuItem onClick={logoutHandler(user.email)}>Logout</MenuItem>
             </MenuList>
           </Menu>
         </div>

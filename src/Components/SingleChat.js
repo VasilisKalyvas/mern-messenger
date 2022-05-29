@@ -2,7 +2,7 @@ import { FormControl } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
 import { IconButton, Spinner, useToast } from "@chakra-ui/react";
-import { getSender, getSenderFull, getSenderGroup } from "../config/ChatLogics";
+import { getSender, getSenderFull, getSenderGroup, getSenderStatus } from "../config/ChatLogics";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ArrowBackIcon } from "@chakra-ui/icons";
@@ -186,7 +186,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   <ProfileModal
                     user={getSenderFull(user, selectedChat.users)}
                   />
-                  {socketConnected ? (<>Online</>)  : (<>Offline</>)}
+                  {getSenderStatus ? (<>Online</>)  : (<>Offline</>)}
                 </>
               ) : (
                 <>
