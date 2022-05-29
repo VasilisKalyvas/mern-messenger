@@ -61,7 +61,7 @@ function SideDrawer() {
 
       const { data } = await axios.post(
         "https://mern-backend-messenger.herokuapp.com/api/user/logout",
-        { email },
+        { email},
         config
       );
 
@@ -210,7 +210,7 @@ function SideDrawer() {
                 <MenuItem>My Profile</MenuItem>{" "}
               </ProfileModal>
               <MenuDivider />
-              <MenuItem onClick={logoutHandler(user.email)}>Logout</MenuItem>
+              <MenuItem onClick={logoutHandler}>Logout</MenuItem>
             </MenuList>
           </Menu>
         </div>
